@@ -315,6 +315,22 @@ p{margin:7px 0;line-height:1.45}.actions{margin-top:12px;gap:8px}.btn{padding:10
 #flowHatsScreen .hat-seq-card p{font-size:clamp(24px,1.68vw,32px);line-height:1.45;font-weight:600;min-height:2.9em;margin:0;letter-spacing:0;text-wrap:initial;overflow-wrap:normal}
 #flowHatsScreen .hat-seq-card>span{margin-top:0}
 @media(max-height:760px) and (min-width:900px){#flowHatsScreen .hat-seq-card p{font-size:clamp(22px,1.55vw,28px);line-height:1.4}}
+
+/* 抽組發表三個問題：教室投影可讀性 */
+#flowHatsScreen .hats-share p{
+  font-size:clamp(22px,1.55vw,30px);
+  font-weight:600;
+  line-height:1.55;
+  color:#253858;
+  margin:10px 0 0;
+  text-align:center;
+}
+#flowHatsScreen .hats-share strong{
+  font-size:clamp(23px,1.8vw,33px);
+}
+@media(max-width:1100px){
+  #flowHatsScreen .hats-share p{font-size:clamp(18px,2vw,25px)}
+}
 </style></head><body><main><section class="panel" id="cover"><div class="eyebrow">CREATIVE THINKING · CLASSROOM ACTIVITY</div><div class="hats" id="coverHats"></div><h1>六頂思考帽</h1><p style="font-size:22px">環境汙染改善任務｜換一頂帽子，換一種思考方式。</p><div class="actions"><button class="btn" onclick="startActivity()">開始活動 →</button></div></section>
 <section class="panel hidden" id="rosterScreen"><div class="eyebrow">TODAY’S GROUPS</div><h2>今日活動分組名單</h2><div class="roster" id="groupRoster"></div><div class="actions"><button class="btn" onclick="showFlow()">了解活動流程 →</button></div></section>
 <section class="panel hidden" id="flowScreen">
