@@ -296,7 +296,7 @@ p{margin:7px 0;line-height:1.45}.actions{margin-top:12px;gap:8px}.btn{padding:10
   <div class="hat-seq-card hat-white"><div class="seq-count">01</div><div class="seq-name">白帽</div><strong>了解問題</strong><p>有哪些汙染問題？</p><span>45 秒</span></div>
   <div class="hat-seq-card hat-green"><div class="seq-count">02</div><div class="seq-name">綠帽</div><strong>提出方法</strong><p>可以怎麼改善？</p><span>45 秒</span></div>
   <div class="hat-seq-card hat-black"><div class="seq-count">03</div><div class="seq-name">黑帽</div><strong>檢查困難</strong><p>執行時會遇到什麼困難？</p><span>45 秒</span></div>
-  <div class="hat-seq-card hat-white"><div class="seq-count">04</div><div class="seq-name">白帽</div><strong>整理資訊</strong><p>有哪些可行的條件與資訊？</p><span>45 秒</span></div>
+  <div class="hat-seq-card hat-green"><div class="seq-count">04</div><div class="seq-name">綠帽</div><strong>改進方案</strong><p>如何克服困難，讓方法更可行？</p><span>45 秒</span></div>
  </div>
  <div class="hats-share"><strong>最後抽組發表（請各組派一位代表）</strong><p>① 選了哪種汙染？　② 最後提出什麼改善方法？　③ 如何克服執行困難？</p></div>
  <div class="actions"><button class="btn" onclick="showScenarios()">選擇討論情境 →</button></div>
@@ -307,7 +307,7 @@ p{margin:7px 0;line-height:1.45}.actions{margin-top:12px;gap:8px}.btn{padding:10
 <div class="scenario-timer-wrap"><span>選擇情境倒數</span><strong id="scenarioCountdown" aria-live="off">00:20</strong><button class="btn secondary" onclick="restartScenarioTimer()">重新計時</button></div>
 <div class="actions"><button class="btn" onclick="beginDiscussion()">各組選好情境，開始討論 →</button></div>
 </section>
-<section class="panel hidden" id="discussion"><div class="eyebrow" id="stepLabel"></div><div class="topic-slot" id="discussionTopic">討論任務｜選擇一種汙染情境，提出並改進改善方案</div><div class="hat-icon" id="bigHat">🎩</div><h2 id="hatName"></h2><div class="chip" id="hatRole"></div><div class="question" id="hatQuestion"></div><div class="timer" id="countdown">00:45</div><div class="progress"><div class="bar" id="timeBar"></div></div><div class="actions"><button class="btn secondary" id="pauseBtn" onclick="togglePause()">暫停</button><button class="btn" onclick="nextHat()">跳過 →</button></div></section>
+<section class="panel hidden" id="discussion"><div class="eyebrow" id="stepLabel"></div><div class="topic-slot" id="discussionTopic">討論任務｜選擇一種汙染情境，提出改善方案</div><div class="hat-icon" id="bigHat">🎩</div><h2 id="hatName"></h2><div class="chip" id="hatRole"></div><div class="question" id="hatQuestion"></div><div class="timer" id="countdown">00:45</div><div class="progress"><div class="bar" id="timeBar"></div></div><div class="actions"><button class="btn secondary" id="pauseBtn" onclick="togglePause()">暫停</button><button class="btn" onclick="nextHat()">跳過 →</button></div></section>
 <section class="panel hidden" id="draw"><div class="eyebrow">GROUP SHARING</div><h2>抽取小組・分享改善方案</h2><p id="drawDesc">設定組數後抽籤，請抽中的小組派一位代表分享改善方案。</p><div class="draw-config" id="drawConfig"><label for="drawCount"><strong>抽取組數</strong></label><select id="drawCount"><option value="1">1 組</option><option value="2">2 組</option><option value="3" selected>3 組</option><option value="4">4 組</option><option value="5">5 組</option><option value="6">6 組</option><option value="7">7 組</option><option value="8">8 組</option><option value="9">9 組</option><option value="10">10 組</option></select><button class="btn" onclick="drawGroups()">隨機抽取發表組別</button></div><div class="groups" id="groups"></div><div id="sharingGuide" class="prompt-list hidden"><strong>請各組派一位代表發表</strong><div>① 選了哪種汙染？　② 最後提出什麼改善方法？　③ 如何克服執行困難？</div></div><div class="bottom"><button class="btn danger" onclick="finishActivity()">結束活動</button></div></section>
 <section class="panel hidden" id="end"><div style="font-size:70px">✨</div><h1>活動結束</h1><p class="finish-msg">謝謝大家一起從不同角度思考。</p><p>每一種觀點，都可能帶來新的發現。</p><div class="actions"><button class="btn" onclick="restart()">重新開始</button></div></section></main><script>
 const hats=[{name:'白色思考帽',role:'事實與資訊',question:'關於這個問題，我們已經知道哪些事實？還需要什麼資訊？',tip:'先說可確認的資訊，不急著下判斷。',color:'#e7ecf4',ink:'#334155'},{name:'紅色思考帽',role:'感受與直覺',question:'這件事讓你有什麼感覺？你的第一直覺是什麼？',tip:'感受不必證明，也不必立刻解釋。',color:'#fee2e2',ink:'#b91c1c'},{name:'黃色思考帽',role:'好處與價值',question:'這個想法有哪些好處？可能帶來什麼正面影響？',tip:'努力尋找值得期待的可能性。',color:'#fef3c7',ink:'#a16207'},{name:'黑色思考帽',role:'風險與困難',question:'可能遇到哪些問題？有什麼風險或需要注意的地方？',tip:'提出合理疑慮，而不是否定別人的想法。',color:'#e5e7eb',ink:'#111827'},{name:'綠色思考帽',role:'創意與新方案',question:'除了目前的做法，還能提出什麼不同又有創意的方案？',tip:'大膽想像，先讓新點子出現。',color:'#dcfce7',ink:'#15803d'},{name:'藍色思考帽',role:'整理與統整',question:'我們討論出哪些重點？下一步最值得採取什麼行動？',tip:'整理各種觀點，形成清楚的結論。',color:'#dbeafe',ink:'#1d4ed8'}];
@@ -333,7 +333,7 @@ const stages=[
 {hat:0,role:'白帽｜整理已知資訊',question:'這個情境有哪些汙染來源？可能對環境或健康造成什麼影響？',seconds:45},
 {hat:4,role:'綠帽｜發想改善方法',question:'我們可以提出哪些減少這種汙染的方法？',seconds:45},
 {hat:3,role:'黑帽｜檢查可行性',question:'這些方法實際執行時，可能遇到什麼困難？',seconds:45},
-{hat:0,role:'白帽｜整理執行資訊',question:'要克服這些困難，我們還需要確認哪些資訊或條件？',seconds:45}
+{hat:4,role:'綠帽｜進一步改進改善方案',question:'如何克服執行困難，讓原本的改善方法更可行？',seconds:45}
 ];
 const DURATION=45;
 const roster=[
